@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Online Clock</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<script type="text/javascript" language="javascript">
+		function chgImg(imgField,imgState) {
+			document[imgField].src = "images/" + imgField + imgState + ".gif"
+		}
+	</script>
+
+ <script type="text/javascript" language="javascript1.5">
+      window.onload = theClock
+
+      function theClock() {
+          now = new Date;
+          
+          theTime = ((now.getHours() > 0 && now.getHours() < 13)) ?
+            now.getHours() : (now.getHours() == 0) ? 12 : now.getHours()-12;
+          theTime += (now.getMinutes() > 9) ? ":" + now.getMinutes() : ":0" 
+            + now.getMinutes();
+          theTime += (now.getSeconds() > 9) ? ":" + now.getSeconds() : ":0" 
+            + now.getSeconds();
+          theTime += (now.getHours() < 12) ? " am" : " pm";
+          
+          clockSpan = document.getElementById("myClock");
+          clockSpan.replaceChild(document.createTextNode(theTime), 
+             clockSpan.firstChild);          
+          
+          setTimeout("theClock()",1000);
+      }
+    </script>
+
+</head>
+
+
+<body>
+
+ <table border="0" cellpadding="1" cellspacing="1" align="left">
+
+  <tr>
+    <td width="200" height="50" align="center"colspan="2" style="background-color: blue; color:white; font-weight: bolder;">Online Clock</td>
+  <tr>
+    <td width="200" height="50" align="left"> 
+
+	<a href="index.html" onmouseover="chgImg('homeButton','On')"
+	onmouseout="chgImg('homeButton','Off')">
+	<img src="images/homeButtonOff.gif" width="150" height="50"
+		border="0" alt="homepage" name="homeButton"/></a> 
+    
+    </td>
+    <td width="200" height="50" align="center" rowspan="4"> <span id="myClock">?</span> </td>
+  <tr>
+    <td width="200" height="50" align="left"> 
+	
+	<a href="clock2.html" onmouseover="chgImg('clockButton','On')"
+	onmouseout="chgImg('clockButton','Off')">
+	<img src="images/clockButtonOff.gif" width="150" height="50"
+	border="0" alt="clock" name="clockButton" /></a>
+    
+   </td>
+  </tr>
+ </table>
+
+
+</body>	
+
+</html>
